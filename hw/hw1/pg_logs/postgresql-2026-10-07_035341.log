@@ -1,0 +1,11 @@
+2026-10-07 03:53:41.137 UTC [41] LOG:  starting PostgreSQL 15.19 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-07 03:53:41.139 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-10-07 03:53:41.216 UTC [45] LOG:  database system was shut down at 2026-10-07 03:53:40 UTC
+2026-10-07 03:53:41.259 UTC [41] LOG:  database system is ready to accept connections
+2026-10-07 03:53:41.535 UTC [41] LOG:  received fast shutdown request
+2026-10-07 03:53:41.542 UTC [41] LOG:  aborting any active transactions
+2026-10-07 03:53:41.549 UTC [41] LOG:  background worker "logical replication launcher" (PID 48) exited with exit code 1
+2026-10-07 03:53:41.562 UTC [43] LOG:  shutting down
+2026-10-07 03:53:41.569 UTC [43] LOG:  checkpoint starting: shutdown immediate
+2026-10-07 03:53:41.847 UTC [43] LOG:  checkpoint complete: wrote 922 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.108 s, sync=0.134 s, total=0.285 s; sync files=301, longest=0.018 s, average=0.001 s; distance=4249 kB, estimate=4249 kB
+2026-10-07 03:53:41.867 UTC [41] LOG:  database system is shut down
