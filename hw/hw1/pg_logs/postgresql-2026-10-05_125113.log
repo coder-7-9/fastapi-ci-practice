@@ -1,0 +1,36 @@
+2026-10-05 12:51:13.326 UTC [41] LOG:  starting PostgreSQL 15.19 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-05 12:51:13.328 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-10-05 12:51:13.335 UTC [45] LOG:  database system was shut down at 2026-10-05 12:51:12 UTC
+2026-10-05 12:51:13.341 UTC [41] LOG:  database system is ready to accept connections
+2026-10-05 12:51:13.505 UTC [41] LOG:  received fast shutdown request
+2026-10-05 12:51:13.508 UTC [41] LOG:  aborting any active transactions
+2026-10-05 12:51:13.512 UTC [41] LOG:  background worker "logical replication launcher" (PID 48) exited with exit code 1
+2026-10-05 12:51:13.513 UTC [43] LOG:  shutting down
+2026-10-05 12:51:13.515 UTC [43] LOG:  checkpoint starting: shutdown immediate
+2026-10-05 12:51:13.626 UTC [43] LOG:  checkpoint complete: wrote 922 buffers (5.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.032 s, sync=0.072 s, total=0.113 s; sync files=301, longest=0.031 s, average=0.001 s; distance=4249 kB, estimate=4249 kB
+2026-10-05 12:51:13.633 UTC [41] LOG:  database system is shut down
+2026-10-05 12:51:13.744 UTC [1] LOG:  starting PostgreSQL 15.19 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-05 12:51:13.744 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-10-05 12:51:13.744 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-10-05 12:51:13.747 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-10-05 12:51:13.752 UTC [59] LOG:  database system was shut down at 2026-10-05 12:51:13 UTC
+2026-10-05 12:51:13.758 UTC [1] LOG:  database system is ready to accept connections
+2026-10-05 12:56:13.854 UTC [57] LOG:  checkpoint starting: time
+2026-10-05 12:56:18.122 UTC [57] LOG:  checkpoint complete: wrote 44 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.223 s, sync=0.031 s, total=4.268 s; sync files=12, longest=0.014 s, average=0.003 s; distance=252 kB, estimate=252 kB
+2026-10-05 13:01:13.226 UTC [57] LOG:  checkpoint starting: time
+2026-10-05 13:02:47.114 UTC [57] LOG:  checkpoint complete: wrote 929 buffers (5.7%); 1 WAL file(s) added, 0 removed, 0 recycled; write=93.778 s, sync=0.048 s, total=93.888 s; sync files=300, longest=0.007 s, average=0.001 s; distance=4260 kB, estimate=4260 kB
+2026-10-05 13:08:54.018 UTC [57] LOG:  checkpoint starting: time
+2026-10-05 13:08:58.499 UTC [57] LOG:  checkpoint complete: wrote 45 buffers (0.3%); 0 WAL file(s) added, 0 removed, 0 recycled; write=4.445 s, sync=0.022 s, total=4.482 s; sync files=39, longest=0.017 s, average=0.001 s; distance=139 kB, estimate=3847 kB
+2026-10-07 03:06:50.213 UTC [240] ERROR:  duplicate key value violates unique constraint "pg_class_relname_nsp_index"
+2026-10-07 03:06:50.213 UTC [240] DETAIL:  Key (relname, relnamespace)=(coffee_id_seq, 2200) already exists.
+2026-10-07 03:06:50.213 UTC [240] STATEMENT:  
+	CREATE TABLE coffee (
+		id SERIAL NOT NULL, 
+		title VARCHAR(200) NOT NULL, 
+		category VARCHAR(200), 
+		description VARCHAR(200), 
+		reviews VARCHAR[], 
+		PRIMARY KEY (id)
+	)
+	
+	

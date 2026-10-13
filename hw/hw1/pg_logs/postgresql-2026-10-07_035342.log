@@ -1,0 +1,44 @@
+2026-10-07 03:53:42.049 UTC [1] LOG:  starting PostgreSQL 15.19 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-07 03:53:42.050 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-10-07 03:53:42.050 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-10-07 03:53:42.061 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-10-07 03:53:42.079 UTC [59] LOG:  database system was shut down at 2026-10-07 03:53:41 UTC
+2026-10-07 03:53:42.099 UTC [1] LOG:  database system is ready to accept connections
+2026-10-07 03:53:42.919 UTC [65] ERROR:  duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+2026-10-07 03:53:42.919 UTC [65] DETAIL:  Key (typname, typnamespace)=(coffee, 2200) already exists.
+2026-10-07 03:53:42.919 UTC [65] STATEMENT:  
+	CREATE TABLE coffee (
+		id SERIAL NOT NULL, 
+		title VARCHAR(200) NOT NULL, 
+		category VARCHAR(200), 
+		description VARCHAR(200), 
+		reviews VARCHAR[], 
+		PRIMARY KEY (id)
+	)
+	
+	
+2026-10-07 03:53:42.919 UTC [64] ERROR:  duplicate key value violates unique constraint "pg_type_typname_nsp_index"
+2026-10-07 03:53:42.919 UTC [64] DETAIL:  Key (typname, typnamespace)=(coffee, 2200) already exists.
+2026-10-07 03:53:42.919 UTC [64] STATEMENT:  
+	CREATE TABLE coffee (
+		id SERIAL NOT NULL, 
+		title VARCHAR(200) NOT NULL, 
+		category VARCHAR(200), 
+		description VARCHAR(200), 
+		reviews VARCHAR[], 
+		PRIMARY KEY (id)
+	)
+	
+	
+2026-10-07 03:54:11.407 UTC [77] FATAL:  role "postgres" does not exist
+2026-10-07 03:55:42.176 UTC [1] LOG:  received fast shutdown request
+2026-10-07 03:55:42.178 UTC [1] LOG:  aborting any active transactions
+2026-10-07 03:55:42.179 UTC [70] FATAL:  terminating connection due to administrator command
+2026-10-07 03:55:42.179 UTC [69] FATAL:  terminating connection due to administrator command
+2026-10-07 03:55:42.179 UTC [67] FATAL:  terminating connection due to administrator command
+2026-10-07 03:55:42.179 UTC [68] FATAL:  terminating connection due to administrator command
+2026-10-07 03:55:42.185 UTC [1] LOG:  background worker "logical replication launcher" (PID 62) exited with exit code 1
+2026-10-07 03:55:42.186 UTC [57] LOG:  shutting down
+2026-10-07 03:55:42.188 UTC [57] LOG:  checkpoint starting: shutdown immediate
+2026-10-07 03:55:42.214 UTC [57] LOG:  checkpoint complete: wrote 104 buffers (0.6%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.005 s, sync=0.015 s, total=0.029 s; sync files=68, longest=0.006 s, average=0.001 s; distance=409 kB, estimate=409 kB
+2026-10-07 03:55:42.220 UTC [1] LOG:  database system is shut down

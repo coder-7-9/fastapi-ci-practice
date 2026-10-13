@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # 1. Описание контейнера СУБД PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: skillbox_postgres_db
+    restart: always
+    
+    # Env-переменные для инициализации СУБД
+    environment:
+      POSTGRES_USER: flask_user
+      POSTGRES_PASSWORD: flask_secure_password
+      POSTGRES_DB: flask_db
+    
+    # Кастомные настройки логирования СУБД согласно заданию
+    command: >
+      postgres
+      -c log_destination=stderr
+      -c logging_collector=on
+      -c log_directory=/var/log/postgresql
+      -c log_filename=postgresql-%Y-%m-%d_%H%M%S.log
+    
+    # Использование Volume для сохранения данных и логов
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Монтируем локальную папку pg_logs для сохранения логов на хост-машине
+      - ./pg_logs:/var/log/postgresql
+    
+    # Подключение к изолированной сети
+    networks:
+      - backend_network
+
+  # 2. Описание контейнера Flask-приложения
+  web:
+    build: ./app
+    container_name: flask_gunicorn_app
+    restart: always
+    
+    # Переменная окружения для подключения к БД (используем имя сервиса "db" вместо IP)
+    environment:
+      DATABASE_URL: postgresql://flask_user:flask_secure_password@db:5432/flask_db
+    
+    # Проброс портов (Gunicorn будет слушать внутри 8000, пробрасываем наружу на 8000)
+    ports:
+      - "8000:8000"
+    
+    # Гарантирует, что контейнер с БД запустится раньше, чем веб-приложение
+    depends_on:
+      - db
+    
+    # Подключение к той же изолированной сети
+    networks:
+      - backend_network
+
+# Описание сетей (Сеть типа bridge для взаимодействия контейнеров)
+networks:
+  backend_network:
+    driver: bridge
+
+# Описание именованных томов для постоянного хранения данных СУБД
+volumes:
+  pgdata:
