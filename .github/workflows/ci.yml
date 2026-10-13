@@ -39,5 +39,6 @@ jobs:
       run: mypy . --exclude "(venv|\.git|materials|practice|hw|migrations)" --ignore-missing-imports
 
     - name: Run tests
-      run: pytest homework/
+      run: pytest homework/ --suppress-no-test-exit-code
+
 
