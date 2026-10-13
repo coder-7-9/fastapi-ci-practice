@@ -16,7 +16,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="API Кулинарной книги (Async)",
-    description="Полностью асинхронное API без генераторов yield, готовое для фронтенда.",
+    description="Полностью асинхронное API без генераторов yield",
     version="1.0.0",
     lifespan=lifespan,
 )
