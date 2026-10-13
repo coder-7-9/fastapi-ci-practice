@@ -1,6 +1,7 @@
 from logging.config import fileConfig
-from sqlalchemy import create_engine, pool
+
 from alembic import context
+from sqlalchemy import create_engine, pool
 
 config = context.config
 
@@ -8,6 +9,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 target_metadata = None
+
 
 def run_migrations_offline() -> None:
     url = "sqlite:///dev_database.db"
@@ -20,18 +22,17 @@ def run_migrations_offline() -> None:
     with context.begin_transaction():
         context.run_migrations()
 
+
 def run_migrations_online() -> None:
     connectable = create_engine(
         "sqlite:///dev_database.db",
         poolclass=pool.NullPool,
     )
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, 
-            target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
         with context.begin_transaction():
             context.run_migrations()
+
 
 if context.is_offline_mode():
     run_migrations_offline()

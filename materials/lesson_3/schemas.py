@@ -5,8 +5,9 @@ class BaseBook(BaseModel):
     title: str
     author: str
 
-class BookIn(BaseBook):
-    ...
+
+class BookIn(BaseBook): ...
+
 
 class BookOut(BaseBook):
     id: int

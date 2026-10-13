@@ -1,11 +1,10 @@
 from typing import List
 
-from fastapi import FastAPI
-from sqlalchemy.future import select
-
 import models
 import schemas
 from database import engine, session
+from fastapi import FastAPI
+from sqlalchemy.future import select
 
 app = FastAPI()
 
@@ -22,7 +21,7 @@ async def shutdown():
     await engine.dispose()
 
 
-@app.post('/books/', response_model=schemas.BookOut)
+@app.post("/books/", response_model=schemas.BookOut)
 async def books(book: schemas.BookIn) -> models.Book:
     new_book = models.Book(**book.dict())
     async with session.begin():
@@ -30,7 +29,7 @@ async def books(book: schemas.BookIn) -> models.Book:
     return new_book
 
 
-@app.get('/books/', response_model=List[schemas.BookOut])
+@app.get("/books/", response_model=List[schemas.BookOut])
 async def books() -> List[models.Book]:
     res = await session.execute(select(models.Book))
     return res.scalars().all()

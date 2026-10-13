@@ -1,11 +1,11 @@
-from sqlalchemy import Column, String, Integer, Text
-
 from database import Base
+from sqlalchemy import Column, Integer, String, Text
 
 
 class RecipeModel(Base):
     """Рецепт в базе данных"""
-    __tablename__ = 'Recipes'
+
+    __tablename__ = "Recipes"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String, nullable=False, index=True)

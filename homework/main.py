@@ -1,7 +1,9 @@
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+
 import database
 import urls
+from fastapi import FastAPI
+
 
 # Асинхронный lifespan контекст для инициализации таблиц
 @asynccontextmanager
@@ -11,16 +13,21 @@ async def lifespan(app: FastAPI):
         await conn.run_sync(database.Base.metadata.create_all)
     yield
 
+
 app = FastAPI(
     title="API Кулинарной книги (Async)",
     description="Полностью асинхронное API без генераторов yield, готовое для фронтенда.",
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
 # Подключаем роуты изurls.py
 app.include_router(urls.router)
 
+
 @app.get("/", tags=["Системные"], summary="Проверка статуса сервера")
 async def root():
-    return {"status": "ok", "message": "Асинхронное API Кулинарной книги работает успешно"}
+    return {
+        "status": "ok",
+        "message": "Асинхронное API Кулинарной книги работает успешно",
+    }
