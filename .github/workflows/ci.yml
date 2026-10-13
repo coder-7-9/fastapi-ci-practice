@@ -36,7 +36,7 @@ jobs:
       run: flake8 . --max-line-length=88 --exclude=venv,.git,materials,practice,hw,migrations
 
     - name: Run mypy check
-            run: mypy . --exclude "(venv|\.git|materials|practice|hw|migrations)" --ignore-missing-imports
+      run: mypy . --exclude "(venv|\.git|materials|practice|hw|migrations)" --ignore-missing-imports
 
     - name: Run tests
       run: pytest
