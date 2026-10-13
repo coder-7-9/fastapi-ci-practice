@@ -3,8 +3,7 @@ import random
 
 import requests
 from flask import Flask, jsonify, request
-from sqlalchemy import (Boolean, Column, ForeignKey, Integer, String,
-                        create_engine, func)
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, create_engine, func
 from sqlalchemy.dialects.postgresql import ARRAY, JSON
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
