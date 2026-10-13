@@ -27,7 +27,7 @@ jobs:
         pip install flake8 isort black mypy pytest
 
     - name: Run isort check
-      run: isort --check-only .
+      run: isort --check-only --profile black .
 
     - name: Run black check
       run: black --check .
@@ -40,3 +40,4 @@ jobs:
 
     - name: Run tests
       run: pytest
+
