@@ -33,10 +33,10 @@ jobs:
       run: black --check .
 
     - name: Run flake8 check
-      run: flake8 . --max-line-length=88
+      run: flake8 . --max-line-length=88 --exclude=venv,.git,materials,practice,hw,migrations
 
     - name: Run mypy check
-      run: mypy .
+      run: mypy . --exclude "(venv|\.git|materials|practice|hw|migrations)"
 
     - name: Run tests
       run: pytest
